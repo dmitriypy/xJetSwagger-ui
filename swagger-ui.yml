@@ -22,6 +22,27 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                currencies:
+                  - id: 6370a5a11f8246a8dde20adf
+                    name: TON
+                    emoji: 💎
+                    url: https://ton.org/
+                    symbol: ton
+                    master_contract: null
+                    rates:
+                      ton: 1
+                      byn: 3.538
+                      cny: 10.054
+                      eur: 1.283
+                      gbp: 1.098
+                      kzt: 628.851
+                      rub: 117.389
+                      uah: 51.762
+                      usd: 1.4
+                      timestamp: 1687364191
+                    verified: true
+                    image: null
               schema: {}
   /api/v1/account.me:
     get:
@@ -34,6 +55,10 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                id: string
+                name: string
+                service_wallet: string
               schema: {}
       security:
         - api_key: []
@@ -48,6 +73,20 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                balances:
+                  - currency: integer
+                    amount: float
+                    values:
+                      byn: 0
+                      cny: 0
+                      eur: 0
+                      gbp: 0
+                      kzt: 0
+                      rub: 0
+                      uah: 0
+                      usd: 0
+                timestamp: integer
               schema: {}
       security:
         - api_key: []
@@ -62,6 +101,8 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                success: bool
               schema: {}
       security:
         - api_key: []
@@ -112,6 +153,9 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              cheque_id: string
+              external_link: https://t.me/xJetSwapBot?start=c_<cheque_id>
             schema:
               $ref: '#/components/schemas/v1_cheque_create_body'
       responses:
@@ -141,6 +185,21 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                id: string
+                issuer_id: string
+                amount: float
+                activates_count: integer
+                activates: list[string]
+                locked_value: float
+                currency: string
+                expires: bool
+                description: string
+                status: activated/canceled/expired/active
+                password: string | None
+                groups_id: list[string] | None
+                personal_id: integer | None
+                is_for_premium: bool
               schema: {}
       security:
         - api_key: []
@@ -193,6 +252,9 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                invoice_id: string
+                external_link: https://t.me/xJetSwapBot?start=inv_<cheque_id>
               schema: {}
       security:
         - api_key: []
@@ -215,6 +277,20 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                id: string
+                description: string
+                currency: string
+                amount: float
+                max_amount: None
+                min_amount: None
+                payments:
+                  - telegram_id: integer
+                    amount: float
+                    comment: str | None
+                max_payments: integer
+                after_pay: []
+                created: '2023-04-20T22:55:24.313000'
               schema: {}
       security:
         - api_key: []
@@ -296,6 +372,10 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                out: 636.782
+                fee: 0.008
+                
               schema: {}
 
   /api/v1/exchanges.createOrder:
@@ -314,6 +394,18 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                id: 6490957fe590a4ce76990956
+                pair:
+                  - exc
+                  - ton
+                type: sell
+                price: None
+                user_id: 640e16147850a95917ae16a0
+                source_amount: 439
+                target_amount: 0.674561
+                status: created
+                created: '2023-06-19T20:50:56.019000'
               schema: {}
       security:
         - api_key: []
@@ -337,6 +429,20 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                id: 6490957fe590a4ce76990956
+                pair:
+                  - exc
+                  - ton
+                type: sell
+                price: None
+                user_id: 640e16147850a95917ae16a0
+                source_amount: 439
+                target_amount: 0.674561
+                transaction_hash: 1H2veknVD94YXQGRsS4u3Kkk17uZvu3Z57pKFfDarJM=
+                status: completed
+                created: '2023-06-19T20:50:56.019000'
+                
               schema: {}
       security:
         - api_key: []
@@ -449,7 +555,7 @@ components:
         to_address:
           type: string
         signature:
-          type: string
+          type: 
     v1_exchanges_estimate:
       type: object
       properties:
@@ -457,6 +563,7 @@ components:
           type: array
           items:
             type: string
+
         type:
           type: string
         amount:
