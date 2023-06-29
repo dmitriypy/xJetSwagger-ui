@@ -1,0 +1,482 @@
+servers:
+  - url: https://xjet.app/
+openapi: 3.0.2
+info:
+  title: xJetAPI
+  description: |
+    This API based on @xJetSwapBot (@test_xjet_bot for testnest) API. You need to get API key from bot. Open it and go to xJetConnect > Manage > Your app > API key.
+
+    This page is fully interactive. Provide obtained API key to AUTHORIZE button on the right, and you can try all API methods by simply clicking buttons and filling forms here
+
+    API token must be specified in header for requests marked with lock. Header name is <b>X-API-Key.</b>
+  version: 1.0.0
+paths:
+  /api/v1/system.currencies:
+    get:
+      tags:
+        - System
+      summary: Get list of currencies.
+      operationId: Get_list_of_currencies
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/account.me:
+    get:
+      tags:
+        - Account
+      summary: Get information about API application.
+      operationId: Get_information_about_API_application
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/account.balances:
+    get:
+      tags:
+        - Account
+      summary: Get balance.
+      operationId: Get_balance
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/account.submitDeposit:
+    get:
+      tags:
+        - Account
+      summary: Check for deposit.
+      operationId: Check_for_deposit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/account.withdraw:
+    post:
+      tags:
+        - Account
+      summary: Withdraw funds.
+      operationId: Withdraw_funds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_account_withdraw_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/account.operations:
+    post:
+      tags:
+        - Account
+      summary: Get operations history.
+      operationId: Get_operations_history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_account_operations_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/cheque.create:
+    post:
+      tags:
+        - Cheque
+      summary: Create cheques.
+      operationId: Create_cheques
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_cheque_create_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/cheque.status:
+    get:
+      tags:
+        - Cheque
+      summary: Get cheque status.
+      operationId: Get_cheque_status
+      parameters:
+        - name: cheque_id
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            title: cheque_id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/cheque.list:
+    get:
+      tags:
+        - Cheque
+      summary: Get list of cheques.
+      operationId: Get_list_of_cheques
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/cheque.cancel:
+    post:
+      tags:
+        - Cheque
+      summary: Cancel cheque .
+      operationId: Cancel_cheque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_cheque_cancel_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/invoice.create:
+    post:
+      tags:
+        - Invoices
+      summary: Create invoice.
+      operationId: Create_invoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_invoice_create_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/invoice.status:
+    get:
+      tags:
+        - Invoices
+      summary: Get invoice status.
+      operationId: Get_invoice_status
+      parameters:
+        - name: cheque_id
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            title: cheque_id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/invoice.list:
+    get:
+      tags:
+        - Invoices
+      summary: Get list of invoices.
+      operationId: Get_list_of_onvoices
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/nft.list:
+    get:
+      tags:
+        - NFT
+      summary: Get list of your NFTs.
+      operationId: Get_list_of_your_NFTs
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+  /api/v1/nft.transfer:
+    post:
+      tags:
+        - NFT
+      summary: Transfer your NFT.
+      operationId: Transfer_you_NFT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_nft_transfer_body'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+
+  /api/v1/exchanges.pairs:
+    get:
+      tags:
+        - Exchanges
+      summary: Get list of pairs.
+      operationId: Get_list_of_pairs
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+
+  /api/v1/exchanges.estimate:
+    post:
+      tags:
+        - Exchanges
+      summary: Estimate.
+      operationId: Estimate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_exchanges_estimate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+  /api/v1/exchanges.createOrder:
+    post:
+      tags:
+        - Exchanges
+      summary: Create order.
+      operationId: Create_order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_exchanges_order_create'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+  /api/v1/exchanges.orderStatus:
+    get:
+      tags:
+        - Exchanges
+      summary: Get order status.
+      operationId: Get_order_status
+      parameters:
+        - name: order_id
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            title: order_id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - api_key: []
+        
+components:
+  schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    v1_account_withdraw_body:
+      required:
+        - amount
+        - currency
+        - ton_address
+      type: object
+      properties:
+        ton_address:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: integer
+    v1_account_operations_body:
+      type: object
+      properties:
+        limit:
+          type: integer
+          default: 100
+        offset:
+          type: integer
+          default: 0
+    v1_cheque_create_body:
+      type: object
+      properties:
+        currency:
+          type: string
+        amount:
+          type: integer
+        expires:
+          type: integer
+        description:
+          type: string
+          default: ''
+        activates_count:
+          type: integer
+          default: 1
+        groups_id:
+          type: array
+          items:
+            type: integer
+        personal_id:
+          type: string
+        password:
+          type: string
+        query_id:
+          type: integer
+        signature:
+          type: string
+    v1_cheque_cancel_body:
+      type: object
+      properties:
+        cheque_id:
+          type: string
+    v1_invoice_create_body:
+      type: object
+      properties:
+        currency:
+          type: string
+        amount:
+          type: integer
+        description:
+          type: string
+        max_payments:
+          type: integer
+          default: 1
+        expires:
+          type: integer
+    v1_nft_transfer_body:
+      type: object
+      properties:
+        nft_address:
+          type: string
+        to_address:
+          type: string
+        signature:
+          type: string
+    v1_exchanges_estimate:
+      type: object
+      properties:
+        pair:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        amount:
+          type: integer
+    v1_exchanges_order_create:
+      type: object
+      properties:
+        pair:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        amount:
+          type: integer
+        min_expected_amount:
+          type: integer
+        signature:
+          type: string
+          
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-API-Key
+      in: header
