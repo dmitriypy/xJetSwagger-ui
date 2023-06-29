@@ -315,6 +315,8 @@ paths:
           content:
             application/json:
               schema: {}
+      security:
+        - api_key: []
 
   /api/v1/exchanges.orderStatus:
     get:
