@@ -353,6 +353,33 @@ paths:
           description: Successful Response
           content:
             application/json:
+              example:
+                {
+  "pairs": [
+    {
+      "id": "647f771d6103be25ab2befb5",
+      "assets": [
+        "exc",
+        "ton"
+      ],
+      "providers": {
+        "dedust": {
+          "pool": "EQD-rHe9UGVhcTF6SIEM72trdffF_pP_okSw3MCfd6Dd9wBq",
+          "fee": 0.008,
+          "reserves": [
+            "866775829924296",
+            "1319477571674"
+          ],
+          "cache_expire": 1688020521.209755
+        }
+      },
+      "active": true,
+      "trading_data": {
+        "avg_price": 0.00152356618801984,
+        "change_24h": 0
+      }
+      }]}
+              
               schema: {}
 
 
@@ -555,7 +582,7 @@ components:
         to_address:
           type: string
         signature:
-          type: 
+          type: string
     v1_exchanges_estimate:
       type: object
       properties:
