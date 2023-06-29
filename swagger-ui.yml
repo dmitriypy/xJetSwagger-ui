@@ -417,7 +417,7 @@ paths:
       summary: Get order status.
       operationId: Get_order_status
       parameters:
-        - name: order_id
+        - name: id
           in: query
           required: true
           style: form
