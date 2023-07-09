@@ -265,13 +265,13 @@ paths:
       summary: Get invoice status.
       operationId: Get_invoice_status
       parameters:
-        - name: cheque_id
+        - name: invoice_id
           in: query
           required: true
           style: form
           explode: true
           schema:
-            title: cheque_id
+            title: invoice_id
       responses:
         '200':
           description: Successful Response
