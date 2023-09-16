@@ -154,8 +154,14 @@ paths:
         content:
           application/json:
             example:
-              cheque_id: string
-              external_link: https://t.me/xJetSwapBot?start=c_<cheque_id>
+              currency: string
+              amount: float
+              expires: float
+              description: string
+              activates_count: integer
+              groups_id: list
+              personal_id: string
+              password: string
             schema:
               $ref: '#/components/schemas/v1_cheque_create_body'
       responses:
